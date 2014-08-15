@@ -447,24 +447,37 @@ exports.BattleFormats = {
 	sleepclausemod: {
 		effectType: 'Rule',
 		onStart: function () {
-			this.add('rule', 'Sleep Clause Mod: Limit one foe put to sleep');
+			this.add('rule', 'Sleep Clause Mod: Limit one Pokemon with sleep moves');
 		},
-		onSetStatus: function (status, target, source) {
-			if (source && source.side === target.side) {
-				return;
-			}
-			if (status.id === 'slp') {
-				for (var i = 0; i < target.side.pokemon.length; i++) {
-					var pokemon = target.side.pokemon[i];
-					if (pokemon.status === 'slp') {
-						if (!pokemon.statusData.source ||
-							pokemon.statusData.source.side !== pokemon.side) {
-							this.add('-message', 'Sleep Clause Mod activated.');
-							return false;
-						}
-					}
+		validateTeam: function (team, format) {
+			var problems = [];
+			var sleepCount = 0;
+			for(var i = 0; i < team.length;i++){
+				if (team[i].moves.indexOf('Dark Void') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Grass Whistle') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Hypnosis') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Lovely Kiss') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Relic Song') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Sing') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Sleep Powder') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Spore') > -1){
+					sleepCount++;
+				} else if (team[i].moves.indexOf('Yawn') > -1){
+					sleepCount++;
+				}
+				if (sleepCount > 1) {
+					problems.push("You are limited to one Pokemon with sleep inducing moves by the sleep clause.");
+					break;
 				}
 			}
+			return problems;
 		}
 	},
 	freezeclause: {
