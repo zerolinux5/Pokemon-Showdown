@@ -8,13 +8,13 @@ exports.BattleFormats = {
 
 	standard: {
 		effectType: 'Banlist',
-		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'HP Percentage Mod', 'Item Clause'],
+		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'Moody Clause', 'Evasion Moves Clause', 'Endless Battle Clause', 'HP Percentage Mod'],
 		banlist: ['Unreleased', 'Illegal', 'Huntail + Shell Smash + Sucker Punch', 'Leavanny + Knock Off + Sticky Web', 'Sylveon + Hyper Voice + Heal Bell + Wish + Baton Pass']
 	},
 	standardnext: {
 		effectType: 'Banlist',
-		ruleset: ['Sleep Clause Mod Smogon', 'Species Clause', 'OHKO Clause', 'HP Percentage Mod'],
-		banlist: ['Unreleased', 'Illegal', 'Soul Dew', 'Huntail + Shell Smash + Sucker Punch', 'Leavanny + Knock Off + Sticky Web', 'Sylveon + Hyper Voice + Heal Bell + Wish + Baton Pass']
+		ruleset: ['Sleep Clause Mod', 'Species Clause', 'OHKO Clause', 'HP Percentage Mod'],
+		banlist: ['Illegal', 'Soul Dew', 'Huntail + Shell Smash + Sucker Punch', 'Leavanny + Knock Off + Sticky Web', 'Sylveon + Hyper Voice + Heal Bell + Wish + Baton Pass']
 	},
 	standardubers: {
 		effectType: 'Banlist',
@@ -445,41 +445,6 @@ exports.BattleFormats = {
 		}
 	},
 	sleepclausemod: {
-		effectType: 'Rule',
-		onStart: function () {
-			this.add('rule', 'Sleep Clause Mod: Limit one Pokemon with sleep moves');
-		},
-		validateTeam: function (team, format) {
-			var problems = [];
-			var sleepCount = 0;
-			for(var i = 0; i < team.length;i++){
-				if (team[i].moves.indexOf('Dark Void') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Grass Whistle') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Hypnosis') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Lovely Kiss') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Relic Song') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Sing') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Sleep Powder') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Spore') > -1){
-					sleepCount++;
-				} else if (team[i].moves.indexOf('Yawn') > -1){
-					sleepCount++;
-				}
-				if (sleepCount > 1) {
-					problems.push("You are limited to one Pokemon with sleep inducing moves by the sleep clause.");
-					break;
-				}
-			}
-			return problems;
-		}
-	},sleepclausemodsmogon: {
 		effectType: 'Rule',
 		onStart: function () {
 			this.add('rule', 'Sleep Clause Mod: Limit one foe put to sleep');
