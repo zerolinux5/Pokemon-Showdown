@@ -36,7 +36,7 @@ exports.Formats = [
 	{
 		name: "Unrestricted",
 		section: "XY Singles",
-
+	
 		ruleset: ['Pokemon', 'Standard Next', 'Team Preview'],
 		banlist: ['Articuno', 'Moltres', 'Zapdos', 'Mew', 'Mewtwo',
 				'Mewtwonite-X', 'Mewtwonite-Y',

@@ -1338,6 +1338,7 @@ var ChatRoom = (function () {
 	};
 	ChatRoom.prototype.add = function (message, noUpdate) {
 		this.logTimes.push(~~(Date.now() / 1000));
+		var refreshCount = 0;
 		this.log.push(message);
 		this.logEntry(message);
 		if (!noUpdate) {
