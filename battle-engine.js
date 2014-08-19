@@ -224,8 +224,8 @@ BattlePokemon = (function () {
 				this.baseMoveset.push({
 					move: move.name,
 					id: move.id,
-					pp: (move.noPPBoosts ? move.pp : move.pp * 8 / 5),
-					maxpp: (move.noPPBoosts ? move.pp : move.pp * 8 / 5),
+					pp: (move.noPPBoosts ? move.pp : move.pp),
+					maxpp: (move.noPPBoosts ? move.pp : move.pp),
 					target: (move.nonGhostTarget && !this.hasType('Ghost') ? move.nonGhostTarget : move.target),
 					disabled: false,
 					used: false
